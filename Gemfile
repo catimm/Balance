@@ -30,11 +30,11 @@ gem 'figaro'
 gem 'stripe'
 gem 'rabl'
 gem 'pg'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass',
+  git: 'https://github.com/twbs/bootstrap-sass', 
+  ref: '540ad23430b1bdb2c72591daf61507ec9e38e468'
 gem 'omniauth'
 gem 'omniauth-linkedin'
-gem 'fb_graph'
-gem "koala", "~> 1.8.0rc1"
 gem "omnicontacts"
 gem 'squeel'
 gem 'thin'
