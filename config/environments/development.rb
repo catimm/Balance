@@ -1,4 +1,5 @@
 BalanceCode::Application.configure do
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -9,16 +10,18 @@ BalanceCode::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  # default_url_options appropriate for a development environment
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }  
-  
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # Set up mailing instructions
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 25 }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
